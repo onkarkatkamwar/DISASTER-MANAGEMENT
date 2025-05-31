@@ -12,5 +12,8 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  optimizeDeps: {
+    include: ['@react-google-maps/api']
+  }
 })
 

@@ -1,38 +1,37 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom"
+import { LocationProvider } from "@/context/LocationContext";
+import { BreadcrumbProvider } from "@/context/BreaderCrumbContext";
 
-// Authentication 
-import LandigPage from "./pages/LandigPage"
-import AuthenticateLayout from "./pages/Auth/AuthLayout"
-import Login from "./pages/Auth/Login"
-import Register from "./pages/Auth/Register"
-import ForgotPassword from "./pages/Auth/ForgotPassword"
 
 // Main Pages
 import DashboardLayout from "./pages/DashboardLayout";
-import Dashboard from "./pages/HR/Dashboard"
+import Dashboard from "./pages/Dashboard/Dashboard"
+import NotFound from "./pages/NotFound";
+import AlertForm from "./pages/Dashboard/CreateAlert";
+import DisasterAlerts from "./pages/Dashboard/DisasterAlerts";
+import OurPastAlerts from "./pages/Dashboard/OurPastAlerts";
+import HelpPage from "./pages/Dashboard/Help";
 
-
-import { BreadcrumbProvider } from "./context/BreaderCrumbContext";
 
 function App() {
   
 
   return (
-    <>
+    <LocationProvider>
       <Router>
         <Routes>
-          <Route index element={<LandigPage />} />
-          <Route path="/login" element={<AuthenticateLayout><Login /></AuthenticateLayout>} />
-          <Route path="/register" element={<AuthenticateLayout><Register /></AuthenticateLayout>} />
-          <Route path="/login/forgotPassword" element={<AuthenticateLayout><ForgotPassword /></AuthenticateLayout>} />
-
-          {/* HR Dashboard */}
-          <Route path='/hr' element={<BreadcrumbProvider><DashboardLayout /></BreadcrumbProvider>}>
-              <Route path="dashboard" element={<Dashboard />} />
+          <Route path="/" element={<Navigate to="/dashboard" replace />} />
+          <Route path='/dashboard' element={<BreadcrumbProvider><DashboardLayout /></BreadcrumbProvider>}>
+              <Route index element={<Dashboard />} />
+              <Route path='alerts' element={<DisasterAlerts />} />
+              <Route path='create-alert' element={<AlertForm />} />
+              <Route path='our-alerts' element={<OurPastAlerts />} />     
+              <Route path='help' element={<HelpPage />} />     
           </Route>
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
-    </>
+    </LocationProvider>
   )
 }
 

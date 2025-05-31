@@ -1,16 +1,12 @@
 import * as React from "react"
 import {
-  CircleUserRound,
   GalleryVerticalEnd,
-  LoaderPinwheel,
   Laptop,
   Volume2,
-  Users,
-  FileText,
-  MonitorCog,
-  Settings,
   HelpCircle,
   Command,
+  TriangleAlert,
+  Contact2Icon,
 } from "lucide-react";
 
 // import { NavMain } from "@/components/nav-main"
@@ -27,8 +23,6 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarRail,
-  SidebarTrigger,
-  useSidebar,
 } from "@/components/ui/sidebar"
 import { NavSecondary } from "./nav-secondary"
 
@@ -39,45 +33,35 @@ const data = {
     avatar: "/avatars/shadcn.jpg",
   },
   Platform: {
-    name: "Refferal Hub",
+    name: "Disaster Manager",
     logo: GalleryVerticalEnd,
-    plan: "MITAOE",
+    plan: "Public",
   },
   navMenu: [
-    {
-      title: "Platform Seturp",
-      url: "/dashboard/platform-setup",
-      icon: MonitorCog, 
-    },
-    { 
-      title: "AI Agent", 
-      url: "/dashboard/ai-agent", 
-      icon: LoaderPinwheel,
-    },
     { 
       title: "Dashboard",
       url: "/dashboard",
       icon: Laptop,
     },
     { 
-      title: "Campaign",
-      url: "/dashboard/campaign",
+      title: "Disaster Events",
+      url: "/dashboard/alerts",
       icon: Volume2,
     },
     {
-      title: "Promoters",
-      url: "/dashboard/promoters",
-      icon: Users, 
+      title: "Create Alert",
+      url: "/dashboard/create-alert",
+      icon: TriangleAlert,
     },
     {
-      title: "Leads",
-      url: "/dashboard/leads",
-      icon: CircleUserRound, 
+      title: "Our Alert",
+      url: "/dashboard/our-alerts",
+      icon: Contact2Icon,
     },
     {
-      title: "Payouts",
-      url: "/dashboard/payouts",
-      icon: FileText, 
+      title: "Help",
+      url: "/dashboard/help",
+      icon: HelpCircle,
     },
     // {
     //   title: "Dashboard",
@@ -100,33 +84,24 @@ const data = {
     //   ],
     // },
   ],
-  navSecondary: [
-    {
-      title: "Settings",
-      url: "#",
-      icon: Settings,
-    },
-    {
-      title: "Help",
-      url: "#",
-      icon: HelpCircle,
-    },
-  ],
+  // navSecondary: [
+  //   {
+  //     title: "Settings",
+  //     url: "#",
+  //     icon: Settings,
+  //   },
+  //   {
+  //     title: "Help",
+  //     url: "/dashboard/create-alert",
+  //     icon: HelpCircle,
+  //   },
+  // ],
 };
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  
-  const { open } = useSidebar()
 
   return (
     <Sidebar variant="inset" {...props} collapsible="icon">
-      
-      {/* SidebarTrigger centered below if sidebar is collapsed */}
-      {!open && (
-        <div className="w-full flex justify-center items-center">
-          <SidebarTrigger />
-        </div>
-      )}
 
       <div className="relative">
         
@@ -139,19 +114,14 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                     <Command className="size-4" />
                   </div>
                   <div className="grid flex-1 text-left text-sm leading-tight">
-                    <span className="truncate font-medium">Acme Inc</span>
-                    <span className="truncate text-xs">Enterprise</span>
+                    <span className="truncate font-medium">Disaster Manager</span>
+                    <span className="truncate text-xs">Public</span>
                   </div>
                 </a>
               </SidebarMenuButton>
             </SidebarMenuItem>
           </SidebarMenu>
         </SidebarHeader>
-
-        {/* SidebarTrigger rendered at the top right if sidebar is not collapsed */}
-        {open && (
-          <SidebarTrigger className="z-100 absolute top-4 right-0" />
-        )}
       </div>
 
       <SidebarContent>
@@ -172,7 +142,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         </SidebarGroup>
 
         {/* Navbar Second */}
-        <NavSecondary items={data.navSecondary} className="mt-auto" />
+        {/* <NavSecondary items={data.navSecondary} className="mt-auto" /> */}
       </SidebarContent>
 
       {/* <SidebarFooter>

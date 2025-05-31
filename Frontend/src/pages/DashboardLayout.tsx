@@ -1,4 +1,4 @@
-import React from 'react' 
+import React, { useEffect, useState } from 'react' 
 import { AppSidebar } from "@/components/app-sidebar"
 import {
   Breadcrumb,
@@ -20,18 +20,54 @@ import {
 import {
   SidebarInset,
   SidebarProvider,
+  SidebarTrigger,
 } from "@/components/ui/sidebar"
 import { useBreadcrumb } from "@/context/BreaderCrumbContext";
 import { Outlet } from "react-router-dom";
 import gahinath from '@/assets/Gahinath.jpg';
+import { useLocation } from '@/context/LocationContext';
+import { Spinner } from '@/components/Spinner';
 
 export default function DashboardLayout() {
     const { items } = useBreadcrumb();
+    const {fetchUserLocation} = useLocation();
+    const [loading, setLoading] = useState<boolean>(true);
+
+    async function fetchLocation(){
+      setLoading(true);
+      try{
+         await fetchUserLocation();
+      }
+      catch (error){
+        console.log("Error while feching Location = ", error)
+      }
+      finally{
+          setLoading(false);
+      }
+    }
+
+    useEffect(()=>{
+      fetchLocation();
+    }, []);
+
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center w-full h-screen">
+        <Spinner />
+      </div>
+    );
+  }
+
+
   return (
     <SidebarProvider>
       <AppSidebar />
       <SidebarInset>
-        <header className=" top-0 py-2 px-10 border-b bg-white">
+        <header className=" top-0 py-2 px-4 border-b bg-white flex justify-between items-center">
+          <div className="w-full">
+                <SidebarTrigger />
+            </div>
           <div className="w-full flex justify-between gap-2 px-4">
             <Breadcrumb className='flex items-center'>
                 <BreadcrumbList>
