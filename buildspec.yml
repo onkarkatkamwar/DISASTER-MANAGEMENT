@@ -1,0 +1,29 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18
+      python: 3.11
+    commands:
+      - echo Installing frontend dependencies...
+      - cd frontend && npm install && cd ..
+      - echo Installing backend dependencies...
+      - pip install -r backend/requirements.txt -t backend/
+  build:
+    commands:
+      - echo Building frontend...
+      - cd frontend && npm run build && cd ..
+      - echo Preparing backend...
+      - mkdir -p build/backend
+      - cp -r backend/* build/backend/
+  post_build:
+    commands:
+      - echo Copying frontend to S3...
+      - aws s3 cp frontend/build/ s3://<YOUR_S3_BUCKET_NAME>/ --recursive
+      - echo Packaging application for CodeDeploy...
+      - cp appspec.yml build/
+      - cd build && zip -r ../app.zip . && cd ..
+artifacts:
+  files:
+    - app.zip
