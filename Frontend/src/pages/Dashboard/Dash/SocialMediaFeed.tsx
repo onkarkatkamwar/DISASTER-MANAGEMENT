@@ -104,11 +104,11 @@ const SocialMediaFeed: React.FC<SocialMediaFeedProps> = ({ location }) => {
           <Card key={i} className="animate-pulse">
             <CardContent className="p-4">
               <div className="flex items-center gap-2 mb-2">
-                <div className="w-6 h-6 bg-gray-200 rounded-full"></div>
-                <div className="h-3 bg-gray-200 rounded w-20"></div>
+                <div className="w-6 h-6 rounded-full"></div>
+                <div className="h-3 rounded w-20"></div>
               </div>
-              <div className="h-4 bg-gray-200 rounded w-full mb-2"></div>
-              <div className="h-3 bg-gray-200 rounded w-3/4"></div>
+              <div className="h-4  rounded w-full mb-2"></div>
+              <div className="h-3 rounded w-3/4"></div>
             </CardContent>
           </Card>
         ))}
@@ -119,8 +119,8 @@ const SocialMediaFeed: React.FC<SocialMediaFeedProps> = ({ location }) => {
   return (
     <div className="space-y-4 max-h-96 overflow-y-auto">
       {posts.length === 0 ? (
-        <div className="text-center py-8 text-gray-500">
-          <MessageCircle className="h-12 w-12 mx-auto mb-4 text-gray-300" />
+        <div className="text-center py-8">
+          <MessageCircle className="h-12 w-12 mx-auto mb-4" />
           <p>No social media reports</p>
           <p className="text-sm">Monitoring platforms for updates</p>
         </div>
@@ -131,7 +131,7 @@ const SocialMediaFeed: React.FC<SocialMediaFeedProps> = ({ location }) => {
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-2">
                   <span className="text-sm">{getPlatformIcon(post.platform)}</span>
-                  <span className="font-medium text-sm text-gray-900">
+                  <span className="font-medium text-sm">
                     {post.username}
                   </span>
                   {post.verified && (
@@ -141,17 +141,17 @@ const SocialMediaFeed: React.FC<SocialMediaFeedProps> = ({ location }) => {
                     {Math.round(post.relevanceScore * 100)}% match
                   </Badge>
                 </div>
-                <div className="flex items-center gap-1 text-xs text-gray-500">
+                <div className="flex items-center gap-1 text-xs">
                   <Clock className="h-3 w-3" />
                   {formatTimestamp(post.timestamp)}
                 </div>
               </div>
               
-              <p className="text-sm text-gray-800 mb-3 leading-relaxed">
+              <p className="text-sm mb-3 leading-relaxed">
                 {post.content}
               </p>
               
-              <div className="flex items-center justify-between text-xs text-gray-500">
+              <div className="flex items-center justify-between text-xs">
                 <div className="flex items-center gap-4">
                   <div className="flex items-center gap-1">
                     <Heart className="h-3 w-3" />

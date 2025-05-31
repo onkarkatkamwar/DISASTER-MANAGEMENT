@@ -102,14 +102,14 @@ const Dashboard = () => {
       <div className='flex flex-col lg:flex-row gap-4 md:gap-6 w-full'>        
         
         {/* Main Disaster Management Card */}
-        <div className='border shadow-sm w-full lg:w-8/12 px-4 sm:px-5 py-6 rounded-md flex flex-col sm:flex-row gap-6 sm:gap-10 bg-gradient-to-r from-blue-50 to-cyan-50'>
+        <div className='border shadow-sm w-full lg:w-8/12 px-4 sm:px-5 py-6 rounded-md flex flex-col sm:flex-row gap-6 sm:gap-10 '>
           <div className='w-full sm:w-7/12 flex flex-col gap-3 sm:gap-4'>
-            <h1 className='text-xl sm:text-2xl font-semibold text-gray-800'> 
+            <h1 className='text-xl sm:text-2xl font-semibol'> 
               Disaster Alert System 🚨<br/>
               Stay informed and prepared for<br />
               emergency situations
             </h1>
-            <p className='text-xs sm:text-sm text-gray-600'>
+            <p className='text-xs sm:text-sm'>
               Report incidents, view weather alerts, and access emergency resources in your area.
             </p>
             <div className='flex gap-3'>
@@ -176,7 +176,7 @@ const Dashboard = () => {
                   </div>
 
                   {weatherData.alerts && weatherData.alerts.length > 0 && (
-                    <div className='mt-4 p-3 bg-red-50 rounded-md border border-red-100'>
+                    <div className='mt-4 p-3 rounded-md border border-red-100'>
                       <h3 className='text-sm font-medium text-red-700 flex items-center gap-2'>
                         <AlertTriangle className='h-4 w-4' />
                         Active Alerts
@@ -226,9 +226,9 @@ const Dashboard = () => {
         </Button>
       </div>
 
-      <div className="mt-8 bg-gradient-to-br from-slate-50 to-slate-100">
+      <div className="mt-8 bg-sidebar">
         {/* Header */}
-        <header className="bg-white shadow-lg border-b-4 border-red-500">
+        <header className="shadow-lg border-b-4 border-red-500">
           <div className="container mx-auto px-4 py-6">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
               <div className="flex items-center gap-3">
@@ -239,7 +239,7 @@ const Dashboard = () => {
                   <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
                     Disaster Information Hub
                   </h1>
-                  <p className="text-gray-600">Real-time alerts and emergency information</p>
+                  <p className="">Real-time alerts and emergency information</p>
                 </div>
               </div>
               
@@ -257,7 +257,7 @@ const Dashboard = () => {
             </div>
             
             {location && (
-              <div className="mt-4 p-3 bg-blue-50 rounded-lg">
+              <div className="mt-4 p-3 rounded-lg">
                 <div className="flex items-center gap-2">
                   <MapPin className="h-4 w-4 text-blue-600" />
                   <span className="text-sm font-medium text-blue-900">

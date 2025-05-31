@@ -111,8 +111,8 @@ const NewsFeed: React.FC<NewsFeedProps> = ({ location }) => {
   return (
     <div className="space-y-4 max-h-96 overflow-y-auto">
       {articles.length === 0 ? (
-        <div className="text-center py-8 text-gray-500">
-          <Rss className="h-12 w-12 mx-auto mb-4 text-gray-300" />
+        <div className="text-center py-8 ">
+          <Rss className="h-12 w-12 mx-auto mb-4 " />
           <p>No recent news available</p>
           <p className="text-sm">Check back later for updates</p>
         </div>
@@ -129,21 +129,21 @@ const NewsFeed: React.FC<NewsFeedProps> = ({ location }) => {
                     {article.relevance}
                   </Badge>
                 </div>
-                <div className="flex items-center gap-1 text-xs text-gray-500">
+                <div className="flex items-center gap-1 text-xs">
                   <Clock className="h-3 w-3" />
                   {formatTimestamp(article.publishedAt)}
                 </div>
               </div>
               
-              <h3 className="font-semibold text-gray-900 mb-2 line-clamp-2">
+              <h3 className="font-semibold mb-2 line-clamp-2">
                 {article.title}
               </h3>
-              <p className="text-sm text-gray-600 mb-3 line-clamp-2">
+              <p className="text-sm mb-3 line-clamp-2">
                 {article.description}
               </p>
               
               <div className="flex items-center justify-between">
-                <div className="text-xs text-gray-500">
+                <div className="text-xs ">
                   {article.source}
                 </div>
                 <Button variant="ghost" size="sm" className="h-6 px-2 text-xs">

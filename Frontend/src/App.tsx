@@ -11,27 +11,34 @@ import AlertForm from "./pages/Dashboard/CreateAlert";
 import DisasterAlerts from "./pages/Dashboard/DisasterAlerts";
 import OurPastAlerts from "./pages/Dashboard/OurPastAlerts";
 import HelpPage from "./pages/Dashboard/Help";
+import { ModeToggle } from "./components/mode-toggle";
 
 
 function App() {
   
 
   return (
-    <LocationProvider>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Navigate to="/dashboard" replace />} />
-          <Route path='/dashboard' element={<BreadcrumbProvider><DashboardLayout /></BreadcrumbProvider>}>
-              <Route index element={<Dashboard />} />
-              <Route path='alerts' element={<DisasterAlerts />} />
-              <Route path='create-alert' element={<AlertForm />} />
-              <Route path='our-alerts' element={<OurPastAlerts />} />     
-              <Route path='help' element={<HelpPage />} />     
-          </Route>
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Router>
-    </LocationProvider>
+    <div className="relative">
+      <div className="absolute w-8 h-8 top-4 right-8 z-50">
+        <ModeToggle />
+      </div>
+      
+      <LocationProvider>
+        <Router>
+          <Routes>
+            <Route path="/" element={<Navigate to="/dashboard" replace />} />
+            <Route path='/dashboard' element={<BreadcrumbProvider><DashboardLayout /></BreadcrumbProvider>}>
+                <Route index element={<Dashboard />} />
+                <Route path='alerts' element={<DisasterAlerts />} />
+                <Route path='create-alert' element={<AlertForm />} />
+                <Route path='our-alerts' element={<OurPastAlerts />} />     
+                <Route path='help' element={<HelpPage />} />     
+            </Route>
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Router>
+      </LocationProvider>
+    </div>
   )
 }
 

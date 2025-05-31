@@ -68,7 +68,7 @@ export default function AlertList() {
             >
             {
                 alert.mediaUrl ? (
-                    <div className="relative h-48 w-full bg-gray-100 overflow-hidden">
+                    <div className="relative h-48 w-full overflow-hidden">
                     {alert.mediaUrl.endsWith('.mp4') ? (
                         <video
                         className="w-full h-full object-cover"
@@ -89,7 +89,7 @@ export default function AlertList() {
                     </div>
                 )
                 :
-                <div className="relative h-48 w-full bg-gray-100 overflow-hidden">
+                <div className="relative h-48 w-full overflow-hidden">
                     <img src={
                         alert.disasterType==="flood"?flood:
                         alert.disasterType==="fire"?fire:
@@ -102,17 +102,17 @@ export default function AlertList() {
 
             <div className="p-4 space-y-2">
                 <div className="flex justify-between items-center">
-                <h3 className="text-lg font-semibold text-gray-800">{alert.name}</h3>
-                <span className="text-sm text-gray-500">
+                <h3 className="text-lg font-semibold">{alert.name}</h3>
+                <span className="text-sm ">
                     {new Date(alert.date).toLocaleDateString()}
                 </span>
                 </div>
 
-                <p className="text-sm text-gray-600">
+                <p className="text-sm">
                 <strong>City:</strong> {alert.city}
                 </p>
 
-                <p className="text-sm text-gray-700 line-clamp-3">
+                <p className="text-sm line-clamp-3">
                 {alert.description}
                 </p>
             </div>
@@ -140,16 +140,16 @@ export default function AlertList() {
                 </AlertDialogCancel>
             </div>
 
-            <div className="overflow-y-auto pr-4 py-2 space-y-4 text-sm text-gray-800">
+            <div className="overflow-y-auto pr-4 py-2 space-y-4 text-sm">
                 <div className="grid grid-cols-2 gap-4">
                 <div>
-                    <h3 className="font-semibold text-gray-900">Reporter Details</h3>
+                    <h3 className="font-semibold">Reporter Details</h3>
                     <p className="mt-1">{alert.name}</p>
-                    <p className="text-gray-600">{alert.phone}</p>
+                    <p className="">{alert.phone}</p>
                 </div>
                 
                 <div>
-                    <h3 className="font-semibold text-gray-900">Alert Details</h3>
+                    <h3 className="font-semibold">Alert Details</h3>
                     <p className="mt-1">
                     {new Date(alert.date).toLocaleString('en-US', {
                         weekday: 'short',
@@ -164,10 +164,10 @@ export default function AlertList() {
                 </div>
 
                 <div>
-                <h3 className="font-semibold text-gray-900">Location</h3>
+                <h3 className="font-semibold">Location</h3>
                 <div className="mt-1 flex gap-2">
                     <span className="inline-flex items-center gap-1">
-                    <MapPin className="h-4 w-4 text-gray-500" />
+                    <MapPin className="h-4 w-4" />
                     {alert.location.latitude.toFixed(4)}, {alert.location.longitude.toFixed(4)}
                     </span>
                     <Button 
@@ -182,13 +182,13 @@ export default function AlertList() {
                 </div>
 
                 <div>
-                <h3 className="font-semibold text-gray-900">Description</h3>
-                <p className="mt-1 text-gray-700 whitespace-pre-line">{alert.description}</p>
+                <h3 className="font-semibold">Description</h3>
+                <p className="mt- whitespace-pre-line">{alert.description}</p>
                 </div>
 
                 {alert.mediaUrl && (
                 <div>
-                    <h3 className="font-semibold text-gray-900">Evidence</h3>
+                    <h3 className="font-semibold">Evidence</h3>
                     <div className="mt-2 border rounded-lg overflow-hidden">
                     {alert.mediaUrl.endsWith(".mp4") ? (
                         <div className="relative">
@@ -200,7 +200,7 @@ export default function AlertList() {
                             href={alert.mediaUrl} 
                             target="_blank" 
                             rel="noopener noreferrer"
-                            className="absolute bottom-2 right-2 bg-black/50 text-white rounded px-2 py-1 text-xs hover:bg-black/70"
+                            className="absolute bottom-2 right-2 rounded px-2 py-1 text-xs hover:bg-black/70"
                         >
                             Open Fullscreen
                         </a>
@@ -219,12 +219,12 @@ export default function AlertList() {
                 )}
 
                 <div>
-                <h3 className="font-semibold text-gray-900">Sent To Authorities</h3>
+                <h3 className="font-semibold ">Sent To Authorities</h3>
                 <ul className="mt-1 space-y-1">
                     {alert.governmentEmails.map((email) => (
                     <li key={email} className="flex items-center gap-2">
-                        <Mail className="h-4 w-4 text-gray-500" />
-                        <span className="text-gray-600">{email}</span>
+                        <Mail className="h-4 w-4" />
+                        <span className="">{email}</span>
                     </li>
                     ))}
                 </ul>

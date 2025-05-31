@@ -24,7 +24,7 @@ export function NavProjects({
           to={projects.url}
           className={`flex items-center gap-2 w-full px-3 py-2 rounded-md transition-colors ${
             isActive
-              ? "bg-blue-100 text-blue-500"
+              ? " text-blue-500"
               : "text-muted-foreground hover:bg-accent hover:text-accent-foreground"
           }`}
         >

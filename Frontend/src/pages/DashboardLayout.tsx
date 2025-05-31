@@ -64,7 +64,7 @@ export default function DashboardLayout() {
     <SidebarProvider>
       <AppSidebar />
       <SidebarInset>
-        <header className=" top-0 py-2 px-4 border-b bg-white flex justify-between items-center">
+        <header className=" top-0 py-2 px-4 border-b flex justify-between items-center">
           <div className="w-full">
                 <SidebarTrigger />
             </div>

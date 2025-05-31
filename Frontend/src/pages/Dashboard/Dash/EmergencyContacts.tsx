@@ -9,7 +9,7 @@ interface EmergencyContactsProps {
   location: { latitude: number; longitude: number };
 }
 
-const EmergencyContacts: React.FC<EmergencyContactsProps> = ({ location }) => {
+const EmergencyContacts: React.FC<EmergencyContactsProps> = () => {
   const emergencyServices = [
     {
       name: 'Emergency Services',
@@ -103,7 +103,7 @@ const EmergencyContacts: React.FC<EmergencyContactsProps> = ({ location }) => {
         </CardHeader>
         <CardContent className="space-y-3">
           {emergencyServices.map((service, index) => (
-            <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+            <div key={index} className="flex items-center justify-between p-3 rounded-lg">
               <div className="flex-1">
                 <div className="flex items-center gap-2 mb-1">
                   <span className="font-semibold text-sm">{service.name}</span>
@@ -111,7 +111,7 @@ const EmergencyContacts: React.FC<EmergencyContactsProps> = ({ location }) => {
                     {service.priority}
                   </Badge>
                 </div>
-                <p className="text-xs text-gray-600 mb-1">{service.description}</p>
+                <p className="text-xs mb-1">{service.description}</p>
                 <div className="flex items-center gap-1 text-xs text-gray-500">
                   <Clock className="h-3 w-3" />
                   {service.available}
@@ -140,15 +140,15 @@ const EmergencyContacts: React.FC<EmergencyContactsProps> = ({ location }) => {
         </CardHeader>
         <CardContent className="space-y-3">
           {shelters.map((shelter, index) => (
-            <div key={index} className="p-3 bg-gray-50 rounded-lg">
+            <div key={index} className="p-3 rounded-lg">
               <div className="flex items-center justify-between mb-2">
                 <span className="font-semibold text-sm">{shelter.name}</span>
                 <Badge className={`text-xs ${getStatusColor(shelter.status)}`}>
                   {shelter.status}
                 </Badge>
               </div>
-              <p className="text-xs text-gray-600 mb-1">{shelter.address}</p>
-              <div className="flex items-center justify-between text-xs text-gray-500">
+              <p className="text-xs mb-1">{shelter.address}</p>
+              <div className="flex items-center justify-between text-xs">
                 <span>{shelter.distance} away</span>
                 <span>Capacity: {shelter.capacity}</span>
               </div>
@@ -170,7 +170,7 @@ const EmergencyContacts: React.FC<EmergencyContactsProps> = ({ location }) => {
             {safetyTips.map((tip, index) => (
               <li key={index} className="flex items-start gap-2 text-sm">
                 <span className="text-orange-600 font-bold">•</span>
-                <span className="text-gray-700">{tip}</span>
+                <span className="">{tip}</span>
               </li>
             ))}
           </ul>

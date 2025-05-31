@@ -252,7 +252,7 @@ function AlertCard({ alert }: { alert: DisasterAlert }) {
           <span className="text-2xl">{getDisasterIcon(alert.type)}</span>
           <div>
             <CardTitle className="text-lg">{alert.title}</CardTitle>
-            <div className="flex items-center text-sm text-muted-foreground">
+            <div className="flex items-center text-sm">
               <MapPin className="h-4 w-4 mr-1" />
               {alert.location}
               {alert.distanceFromUser && (
@@ -265,7 +265,7 @@ function AlertCard({ alert }: { alert: DisasterAlert }) {
       </CardHeader>
       <CardContent>
         <p className="text-sm mb-3">{alert.description}</p>
-        <div className="flex justify-between text-sm text-muted-foreground">
+        <div className="flex justify-between text-sm">
           <span>
             Started: {alert.startDate.toLocaleDateString()}
           </span>

@@ -133,8 +133,8 @@ const AlertsFeed: React.FC<AlertsFeedProps> = ({ location }) => {
   return (
     <div className="space-y-4 max-h-96 overflow-y-auto">
       {alerts.length === 0 ? (
-        <div className="text-center py-8 text-gray-500">
-          <AlertTriangle className="h-12 w-12 mx-auto mb-4 text-gray-300" />
+        <div className="text-center py-8">
+          <AlertTriangle className="h-12 w-12 mx-auto mb-4" />
           <p>No active alerts in your area</p>
           <p className="text-sm">Stay safe and check back regularly</p>
         </div>
@@ -152,16 +152,16 @@ const AlertsFeed: React.FC<AlertsFeedProps> = ({ location }) => {
                     {alert.type}
                   </Badge>
                 </div>
-                <div className="flex items-center gap-1 text-xs text-gray-500">
+                <div className="flex items-center gap-1 text-xs">
                   <Clock className="h-3 w-3" />
                   {formatTimestamp(alert.timestamp)}
                 </div>
               </div>
               
-              <h3 className="font-semibold text-gray-900 mb-2">{alert.title}</h3>
-              <p className="text-sm text-gray-600 mb-3">{alert.description}</p>
+              <h3 className="font-semibold mb-2">{alert.title}</h3>
+              <p className="text-sm mb-3">{alert.description}</p>
               
-              <div className="flex items-center justify-between text-xs text-gray-500">
+              <div className="flex items-center justify-between text-xs">
                 <div className="flex items-center gap-4">
                   <div className="flex items-center gap-1">
                     <MapPin className="h-3 w-3" />

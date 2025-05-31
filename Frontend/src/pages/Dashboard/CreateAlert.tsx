@@ -102,9 +102,9 @@ export default function AlertForm(){
   return (
     <form
       onSubmit={handleSubmit}
-      className="max-w-3xl w-full mx-auto mt-10 bg-white shadow-lg rounded-2xl p-8 space-y-6"
+      className="max-w-3xl w-full mx-auto mt-10 border shadow-lg rounded-2xl p-8 space-y-6"
     >
-      <h2 className="text-2xl md:text-3xl font-bold text-gray-800 text-center">
+      <h2 className="text-2xl md:text-3xl font-bold text-center">
         Emergency Disaster Alert Form
       </h2>
 
@@ -190,7 +190,7 @@ export default function AlertForm(){
           <Label>Location Access</Label>
           <div className="flex items-center gap-4">
             <div
-              className={`px-4 py-2 rounded-full text-white font-semibold cursor-pointer ${
+              className={`px-4 py-2 rounded-full font-semibold cursor-pointer ${
                 location ? "bg-green-600" : "bg-gray-400"
               }`}
               onClick={async () => {
@@ -216,7 +216,7 @@ export default function AlertForm(){
               {location ? "ON" : "OFF"}
             </div>
             {!location && (
-              <span className="text-sm text-gray-600">
+              <span className="">
                 Click to enable location for accurate alert tagging.
               </span>
             )}
@@ -244,7 +244,7 @@ export default function AlertForm(){
           onChange={handleFileChange}
           className="cursor-pointer"
         />
-        <p className="text-sm text-gray-500 mt-1">
+        <p className="text-sm mt-1">
           Max 5MB. Supported: JPG, PNG, MP4.
         </p>
       </div>
@@ -253,13 +253,13 @@ export default function AlertForm(){
         <Button
           type="submit"
           disabled={isSubmitting}
-          className="w-full bg-red-600 hover:bg-red-700 text-white py-4 text-base font-semibold"
+          className="w-full bg-red-600 hover:bg-red-700 py-4 text-base font-semibold"
         >
           {isSubmitting ? "Submitting Alert..." : "Submit Emergency Alert"}
         </Button>
       </div>
 
-      <p className="text-center text-sm text-gray-500">
+      <p className="text-center text-sm">
         Fields marked with * are required. Misuse of this form may lead to legal action.
       </p>
     </form>
